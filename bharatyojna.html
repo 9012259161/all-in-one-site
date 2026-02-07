@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Sarkari Yojana | All Government Schemes in One Place</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #dc2626;
+            --accent-color: #059669;
+            --light-bg: #f0f9ff;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0f172a 100%);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #fbbf24;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+        }
+
+        .logo span {
+            color: #fbbf24;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            box-shadow: var(--shadow);
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            cursor: pointer;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Schemes Section */
+        .schemes {
+            padding: 3rem 0;
+            background-color: var(--light-bg);
+        }
+
+        .schemes-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: var(--white);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .schemes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .scheme-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .scheme-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .scheme-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
+        }
+
+        .scheme-body {
+            padding: 1.5rem;
+        }
+
+        .scheme-body h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .scheme-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .scheme-description {
+            margin-bottom: 1rem;
+        }
+
+        .scheme-link {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .scheme-link:hover {
+            background-color: #047857;
+        }
+
+        /* Government Links Section */
+        .gov-links {
+            padding: 3rem 0;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .link-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .link-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .link-list {
+            list-style: none;
+        }
+
+        .link-list li {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .link-list a {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .link-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .link-list i {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #fbbf24;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d5db;
+            font-size: 0.9rem;
+        }
+
+        .ashoka-chakra {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin: 0 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                width: 100%;
+                margin-top: 1rem;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.8rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1.2rem;
+                right: 20px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .categories-grid, .schemes-grid, .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <div>
+                    <h1>Bharat <span>Sarkari Yojana</span></h1>
+                    <p>All Government Schemes in One Place</p>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#schemes"><i class="fas fa-list-alt"></i> Schemes</a></li>
+                    <li><a href="#categories"><i class="fas fa-tags"></i> Categories</a></li>
+                    <li><a href="#links"><i class="fas fa-link"></i> Government Links</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Discover All Indian Government Schemes</h2>
+            <p>Find detailed information about hundreds of government schemes, programs, and initiatives for citizens, farmers, women, students, and businesses.</p>
+            <div class="search-box">
+                <input type="text" placeholder="Search for schemes (e.g., PM Kisan, Ayushman Bharat, Skill India)">
+                <button><i class="fas fa-search"></i> Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Browse by Category</h2>
+                <p>Find schemes tailored for different segments of society</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>Women & Child</h3>
+                    <p>Schemes for women empowerment and child welfare</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>Scholarships, loans and educational initiatives</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                    <h3>Farmers & Agriculture</h3>
+                    <p>Support schemes for farmers and agricultural sector</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Employment</h3>
+                    <p>Job creation, skill development and entrepreneurship</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Housing</h3>
+                    <p>Affordable housing and urban development schemes</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Health & Wellness</h3>
+                    <p>Healthcare, insurance and wellness programs</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Financial Inclusion</h3>
+                    <p>Banking, insurance and pension schemes</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Business & MSME</h3>
+                    <p>Support for businesses, startups and MSMEs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schemes Section -->
+    <section class="schemes" id="schemes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Government Schemes</h2>
+                <p>Detailed information about major government initiatives</p>
+            </div>
+            <div class="schemes-filter">
+                <button class="filter-btn active" data-filter="all">All Schemes</button>
+                <button class="filter-btn" data-filter="central">Central Government</button>
+                <button class="filter-btn" data-filter="state">State Government</button>
+                <button class="filter-btn" data-filter="recent">Recently Launched</button>
+            </div>
+            <div class="schemes-grid">
+                <!-- Scheme 1 -->
+                <div class="scheme-card" data-category="central">
+                    <div class="scheme-header">
+                        <h3>PM-KISAN Samman Nidhi</h3>
+                    </div>
+                    <div class="scheme-body">
+                        <div class="scheme-meta">
+                            <span><i class="fas fa-tag"></i> Agriculture</span>
+                            <span><i class="fas fa-calendar"></i> Launched: 2019</span>
+                        </div>
+                        <p>Income support scheme providing ₹6,000 per year to small and marginal farmer families.</p>
+                        <a href="https://pmkisan.gov.in" target="_blank" class="scheme-link">Official Website <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Scheme 2 -->
+                <div class="scheme-card" data-category="central">
+                    <div class="scheme-header">
+                        <h3>Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB-PMJAY)</h3>
+                    </div>
+                    <div class="scheme-body">
+                        <div class="scheme-meta">
+                            <span><i class="fas fa-tag"></i> Health</span>
+                            <span><i class="fas fa-calendar"></i> Launched: 2018</span>
+                        </div>
+                        <p>World's largest health insurance scheme providing coverage of ₹5 lakh per family per year.</p>
+                        <a href="https://pmjay.gov.in" target="_blank" class="scheme-link">Official Website <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Scheme 3 -->
+                <div class="scheme-card" data-category="central">
+                    <div class="scheme-header">
+                        <h3>Pradhan Mantri Awas Yojana (PMAY)</h3>
+                    </div>
+                    <div class="scheme-body">
+                        <div class="scheme-meta">
+                            <span><i class="fas fa-tag"></i> Housing</span>
+                            <span><i class="fas fa-calendar"></i> Launched: 2015</span>
+                        </div>
+                        <p>Housing for all by 2022 with affordable housing for urban and rural poor.</p>
+                        <a href="https://pmaymis.gov.in" target="_blank" class="scheme-link">Official Website <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Scheme 4 -->
+                <div class="scheme-card" data-category="state">
+                    <div class="scheme-header">
+                        <h3>Mukhyamantri Kanya Sumangala Yojana (UP)</h3>
+                    </div>
+                    <div class="scheme-body">
+                        <div class="scheme-meta">
+                            <span><i class="fas fa-tag"></i> Women & Child</span>
+                            <span><i class="fas fa-calendar"></i> Launched: 2019</span>
+                        </div>
+                        <p>Uttar Pradesh scheme providing financial assistance for girl child education and welfare.</p>
+                        <a href="https://mksy.up.gov.in" target="_blank" class="scheme-link">Official Website <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Scheme 5 -->
+                <div class="scheme-card" data-category="central">
+                    <div class="scheme-header">
+                        <h3>PM Mudra Yojana</h3>
+                    </div>
+                    <div class="scheme-body">
+                        <div class="scheme-meta">
+                            <span><i class="fas fa-tag"></i> Business</span>
+                            <span><i class="fas fa-calendar"></i> Launched: 2015</span>
+                        </div>
+                        <p>Provides loans up to ₹10 lakh to non-corporate, non-farm small/micro enterprises.</p>
+                        <a href="https://www.mudra.org.in" target="_blank" class="scheme-link">Official Website <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Scheme 6 -->
+                <div class="scheme-card" data-category="recent">
+                    <div class="scheme-header">
+                        <h3>PM SVANidhi Scheme</h3>
+                    </div>
+                    <div class="scheme-body">
+                        <div class="scheme-meta">
+                            <span><i class="fas fa-tag"></i> Financial Inclusion</span>
+                            <span><i class="fas fa-calendar"></i> Launched: 2020</span>
+                        </div>
+                        <p>Provides affordable working capital loans to street vendors for livelihood support.</p>
+                        <a href="https://pmsvanidhi.mohua.gov.in" target="_blank" class="scheme-link">Official Website <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Government Links Section -->
+    <section class="gov-links" id="links">
+        <div class="container">
+            <div class="section-title">
+                <h2>Important Government Portals</h2>
+                <p>Direct links to official government websites and portals</p>
+            </div>
+            <div class="links-grid">
+                <div class="link-card">
+                    <h3>Central Government</h3>
+                    <ul class="link-list">
+                        <li><a href="https://www.india.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> National Portal of India</a></li>
+                        <li><a href="https://mygov.in" target="_blank"><i class="fas fa-external-link-alt"></i> MyGov - Citizen Engagement Platform</a></li>
+                        <li><a href="https://digitalindia.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> Digital India</a></li>
+                        <li><a href="https://dbtbharat.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> Direct Benefit Transfer</a></li>
+                        <li><a href="https://www.pmindia.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> Prime Minister's Office</a></li>
+                    </ul>
+                </div>
+                
+                <div class="link-card">
+                    <h3>State Government Portals</h3>
+                    <ul class="link-list">
+                        <li><a href="https://up.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> Uttar Pradesh</a></li>
+                        <li><a href="https://www.maharashtra.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> Maharashtra</a></li>
+                        <li><a href="https://www.bihar.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> Bihar</a></li>
+                        <li><a href="https://www.wb.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> West Bengal</a></li>
+                        <li><a href="https://www.tn.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> Tamil Nadu</a></li>
+                    </ul>
+                </div>
+                
+                <div class="link-card">
+                    <h3>Ministry Portals</h3>
+                    <ul class="link-list">
+                        <li><a href="https://rural.nic.in" target="_blank"><i class="fas fa-external-link-alt"></i> Ministry of Rural Development</a></li>
+                        <li><a href="https://www.education.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> Ministry of Education</a></li>
+                        <li><a href="https://mohfw.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> Ministry of Health</a></li>
+                        <li><a href="https://agricoop.nic.in" target="_blank"><i class="fas fa-external-link-alt"></i> Ministry of Agriculture</a></li>
+                        <li><a href="https://msme.gov.in" target="_blank"><i class="fas fa-external-link-alt"></i> Ministry of MSME</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Bharat Sarkari Yojana</h3>
+                    <p>Your one-stop destination for all Indian government schemes. We aggregate information from official sources to make it easily accessible to every citizen.</p>
+                    <p><i class="fas fa-flag ashoka-chakra"></i> Serving the Nation <i class="fas fa-flag ashoka-chakra"></i></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#schemes">All Schemes</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#links">Government Links</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@sarkariyojana.gov.in</li>
+                        <li><i class="fas fa-phone"></i> Helpline: now not have </li>
+                        <li><i class="fas fa-map-marker-alt"></i> softcrop indian engineer</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Important Links</h3>
+                    <ul>
+                        <li><a href="https://www.india.gov.in" target="_blank">India.gov.in</a></li>
+                        <li><a href="https://directory.gov.in" target="_blank">National Government Directory</a></li>
+                        <li><a href="https://services.india.gov.in" target="_blank">National Government Services Portal</a></li>
+                        <li><a href="https://www.nic.in" target="_blank">National Informatics Centre</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Bharat Sarkari Yojana Portal. This is a demonstrative website for informational purposes. For official information, please visit the respective government portals.</p>
+                <p>Made with <i class="fas fa-heart" style="color: #dc2626;"></i> for the people of India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Scheme Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const schemeCards = document.querySelectorAll('.scheme-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                schemeCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector('.search-box input');
+        const searchButton = document.querySelector('.search-box button');
+        
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') performSearch();
+        });
+        
+        function performSearch() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            if(searchTerm === '') return;
+            
+            // In a real implementation, this would search through a database
+            // For demo purposes, we'll just show an alert
+            alert(`Search functionality would look for: "${searchTerm}"\n\nIn a real implementation, this would search through all scheme details and show relevant results.`);
+            
+            // Example of what could be done:
+            // Highlight matching terms, filter schemes, etc.
+        }
+    </script>
+</body>
+</html>
